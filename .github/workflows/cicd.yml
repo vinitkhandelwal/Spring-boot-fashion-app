@@ -20,17 +20,17 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
-        run: docker build -t backendfashionapp/fashionrent .
+        run: docker build -t vinit3101/fashionrent .
       - name: Publish image to docker hub
-        run: docker push backendfashionapp/fashionrent:latest
+        run: docker push vinit3101/fashionrent:latest
 
   deploy:
     needs: build
     runs-on: [aws-ec2]
     steps:
       - name: Pull Image from docker hub
-        run: docker pull backendfashionapp/fashionrent:latest
+        run: docker pull vinit3101/fashionrent:latest
       - name: Delete old container
         run: docker rm -f fashionrent-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name fashionrent-container backendfashionapp/fashionrent
+        run: docker run -d -p 8080:8080 --name fashionrent-container vinit3101/fashionrent
