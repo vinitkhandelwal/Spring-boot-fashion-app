@@ -67,4 +67,4 @@ flyway:
   Schemas: public
 
 server:
-  port: 8181
+  port: 8080
