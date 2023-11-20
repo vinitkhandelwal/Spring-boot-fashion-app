@@ -15,14 +15,18 @@ public class UserPrincipal implements OAuth2User, UserDetails {
     private Long id;
     private String email;
     private String password;
+    private String firstName;
+    private String lastName;
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
-    public UserPrincipal(Long id, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(Long id, String email, String password, String firstName, String lastName, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public static UserPrincipal create(User user) {
@@ -33,6 +37,8 @@ public class UserPrincipal implements OAuth2User, UserDetails {
                 user.getId(),
                 user.getEmail(),
                 user.getPassword(),
+                user.getFirstName(),
+                user.getLastName(),
                 authorities
         );
     }
@@ -98,5 +104,21 @@ public class UserPrincipal implements OAuth2User, UserDetails {
     @Override
     public String getName() {
         return String.valueOf(id);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
