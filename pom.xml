@@ -92,6 +92,19 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.vividsolutions</groupId>
+			<artifactId>jts</artifactId>
+			<version>1.13</version> <!-- Use the latest version available -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-spatial</artifactId>
+			<version>5.4.32.Final</version> <!-- Use the version compatible with your Hibernate version -->
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -5,11 +5,14 @@ spring:
       password: Password$789
       driver-class-mame: org.postgresql.Driver
 
+
     jpa:
       proprties:
         hibernate:
           temp:
             use_jdbc_metadata_defaults: false
+          dialect:
+            org.hibernate.spatial.dialect.postgis.PostgisDialect:
       show-sql: true
       hibernate:
           ddl-auto: none

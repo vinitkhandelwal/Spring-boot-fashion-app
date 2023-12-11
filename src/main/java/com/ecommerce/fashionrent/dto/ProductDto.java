@@ -15,6 +15,9 @@ public class ProductDto {
     private String brand;
     private String occasion;
     private String category;
+    private String size;
+    private String fit;
+    private String subcategory;
     private List<ProductImageUrl> productImageUrls;
 
     public Integer getProductId() {
@@ -79,6 +82,30 @@ public class ProductDto {
 
     public void setProductImageUrls(List<ProductImageUrl> productImageUrls) {
         this.productImageUrls = productImageUrls;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getFit() {
+        return fit;
+    }
+
+    public void setFit(String fit) {
+        this.fit = fit;
+    }
+
+    public String getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
     }
 
     @Override

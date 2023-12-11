@@ -1,5 +1,10 @@
 package com.ecommerce.fashionrent.entity;
 
+
+import org.hibernate.annotations.Type;
+import org.locationtech.jts.geom.Point;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +25,13 @@ public class ProductLenders {
     private String ocassion;
     @Column(name = "lenderid")
     private Integer lenderId;
+    private String subcategory;
+    private String gender;
+    private String size;
+    private String fit;
+//    @Type(type = "org.hibernate.spatial.geom.PointType")
+    private Point coordinates;
+
 
     public Integer getId() {
         return id;
@@ -83,5 +95,45 @@ public class ProductLenders {
 
     public void setLenderId(Integer lenderId) {
         this.lenderId = lenderId;
+    }
+
+    public String getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getFit() {
+        return fit;
+    }
+
+    public void setFit(String fit) {
+        this.fit = fit;
+    }
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
     }
 }

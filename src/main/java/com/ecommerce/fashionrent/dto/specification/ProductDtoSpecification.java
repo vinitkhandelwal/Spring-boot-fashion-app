@@ -12,5 +12,9 @@ public interface ProductDtoSpecification {
     String getBrand();
     String getOccasion();
     String getCategory();
+    String getSubCategory();
+    String getFit();
+    String getGender();
+    String getSize();
     boolean isThumbnail();
 }
