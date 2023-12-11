@@ -41,7 +41,7 @@ public class ProductService {
             productDto.setSize(ptos.getSize());
             productDto.setFit(ptos.getFit());
             productDto.setSubcategory(ptos.getSubCategory());
-            int index = productDtos.indexOf(productDto);
+            int index = products.indexOf(productDto);
 
             if (index != -1) {
                 productDto = products.get(index);
