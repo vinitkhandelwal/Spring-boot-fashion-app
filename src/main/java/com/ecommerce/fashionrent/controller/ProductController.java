@@ -4,12 +4,10 @@ import com.ecommerce.fashionrent.dto.ProductDto;
 import com.ecommerce.fashionrent.dto.ProductFilter;
 import com.ecommerce.fashionrent.dto.specification.ProductDtoSpecification;
 import com.ecommerce.fashionrent.service.ProductService;
-import org.springdoc.api.annotations.ParameterObject;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +19,12 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public List<ProductDto> getAllProduct(@ParameterObject ProductFilter productFilter){
+    public List<ProductDto> getAllProduct(@Parameter ProductFilter productFilter){
         return productService.getAllProducts(productFilter);
+    }
+
+    @PostMapping
+    public void postProduct(@RequestBody ProductDto productDto){
+
     }
 }

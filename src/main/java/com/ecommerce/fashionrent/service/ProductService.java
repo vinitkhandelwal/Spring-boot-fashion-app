@@ -58,6 +58,10 @@ public class ProductService {
         return products;
     }
 
+    public void addProduct(ProductDto productDto){
+            
+    }
+
     private boolean subCategoryFilter(ProductFilter productFilter, ProductDtoSpecification e) {
         if (productFilter.getSubCategories() != null) {
             if(productFilter.getSubCategories().contains(e.getSubCategory())){

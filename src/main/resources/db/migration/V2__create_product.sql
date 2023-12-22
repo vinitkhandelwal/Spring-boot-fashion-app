@@ -24,3 +24,4 @@ CREATE TABLE public.productimageurl (
     	  REFERENCES productlenders(id),
 	CONSTRAINT productimagepkey PRIMARY KEY (id)
 );
+
