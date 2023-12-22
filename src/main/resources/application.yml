@@ -7,17 +7,17 @@ spring:
 
 
     jpa:
-      proprties:
-        hibernate:
-          temp:
-            use_jdbc_metadata_defaults: false
-          dialect:
-            org.hibernate.spatial.dialect.postgis.PostgisDialect:
+#      proprties:
+#        hibernate:
+#          temp:
+#            use_jdbc_metadata_defaults: false
+#          dialect:
+#            org.hibernate.spatial.dialect.postgis.PostgisDialect:
       show-sql: true
       hibernate:
           ddl-auto: none
           naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      database-platform: com.ecommerce.fashionrent.config.PostgreSQL10CustomDialect
 
     security:
       oauth2:
