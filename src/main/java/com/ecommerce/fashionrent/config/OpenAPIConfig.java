@@ -3,19 +3,13 @@ package com.ecommerce.fashionrent.config;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.List;
 
 @Configuration
-@EnableSwagger2
 //@SecurityScheme(
 //		name = "Bearer Authentication",
 //		type = SecuritySchemeType.HTTP,
@@ -24,18 +18,25 @@ import java.util.List;
 //)
 public class OpenAPIConfig {
 
+	public static final String SECURITY_SCHEME_NAME = "bearerAuth";
+	public static final String SECURITY_SCHEME = "bearer";
+	public static final String SECURITY_SCHEME_BEARER_FORMAT = "JWT";
+
 	@Bean
-	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.ecommerce.fashionrent"))
-				.paths(PathSelectors.any())
-				.build()
-				.securitySchemes(List.of(apiKey()));
+	public OpenAPI customOpenAPI() {
+		return new OpenAPI()
+				.addSecurityItem(new SecurityRequirement().addList(SECURITY_SCHEME_NAME))
+				.components(
+						new Components()
+								.addSecuritySchemes(SECURITY_SCHEME_NAME,
+										new io.swagger.v3.oas.models.security.SecurityScheme()
+												.name(SECURITY_SCHEME_NAME)
+												.type(io.swagger.v3.oas.models.security.SecurityScheme.Type.HTTP)
+												.scheme(SECURITY_SCHEME)
+												.bearerFormat(SECURITY_SCHEME_BEARER_FORMAT)
+								)
+				);
 	}
 
-	private ApiKey apiKey() {
-		return new ApiKey("Bearer Token", "Authorization", "header");
-	}
 
 }

@@ -11,8 +11,8 @@ public interface RentedProductDtoSpecification {
     BigDecimal getRrp();
     BigDecimal getRentPrice();
     String[] getImageUrl();
-    LocalDate fromDate();
-    LocalDate toDate();
+    LocalDate getDateFrom();
+    LocalDate getDateTo();
 
 
 }

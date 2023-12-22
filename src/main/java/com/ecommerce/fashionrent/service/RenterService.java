@@ -15,6 +15,7 @@ public class RenterService {
     private final RenterRepository renterRepository;
 
     public List<RentedProductDtoSpecification> getAllRentedProduct(Integer userId){
-            return renterRepository.getRentedProducts(userId);
+            return renterRepository.getRentedProducts(userId).stream()
+                    .sorted((e1,e2) -> e2.getDateFrom().compareTo(e1.getDateFrom())).toList();
     }
 }
