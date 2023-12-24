@@ -13,13 +13,15 @@ public interface ProductRepository extends JpaRepository<ProductLenders, Integer
 
 
     @Query(value = """
-            select p.id as productId, p.productname as productName, p.rrp, p.rentprice as rentPrice,
-            p.brand, p.ocassion as occasion, p.category,p.subcategory as subCategory,p.fit as fit,
-            p2.imageurl as imageUrl, p2.isthumbnail as thumbnail from productlenders p  
-            join productimageurl p2 ON p2.productid = p.id 
-             """,nativeQuery = true
-            )
+            with productimage as (
+               select array_agg(imageurl) AS result_array,productid from productimageurl p2 group by productid)
+               select p.id as productId, p.productname as productName, p.rrp, p.rentprice as rentPrice,
+               p.brand, p.ocassion as occasion, p.category,p.type as type,p.fit as fit,p.size,
+               pi.result_array as imageUrl from productlenders p
+               join productimage pi ON pi.productid = p.id  
+             """, nativeQuery = true
+    )
     public List<ProductDtoSpecification> getAllProducts(
-          );
+    );
 
 }

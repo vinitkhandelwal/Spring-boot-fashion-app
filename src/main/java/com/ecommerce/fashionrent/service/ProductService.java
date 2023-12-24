@@ -3,11 +3,8 @@ package com.ecommerce.fashionrent.service;
 import com.ecommerce.fashionrent.dto.ProductDto;
 import com.ecommerce.fashionrent.dto.ProductFilter;
 import com.ecommerce.fashionrent.dto.specification.ProductDtoSpecification;
-import com.ecommerce.fashionrent.entity.ProductImageUrl;
 
 import com.ecommerce.fashionrent.repository.ProductRepository;
-import io.swagger.v3.oas.annotations.servers.Server;
-import io.swagger.v3.oas.models.links.Link;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +21,7 @@ public class ProductService {
         List<ProductDtoSpecification> productDtos = productRepository.getAllProducts();
         List<ProductDto> products = new ArrayList<>();
         List<ProductDtoSpecification> filtered =   productDtos.stream().filter(e ->
-            subCategoryFilter(productFilter, e) && brandFilter(productFilter, e)
+            typeFilter(productFilter, e) && brandFilter(productFilter, e)
                     && genderFilter(productFilter, e) && occassionFilter(productFilter, e)
                     && sizeFilter(productFilter, e) && fitFilter(productFilter, e)
                     && priceFilter(productFilter, e)).collect(Collectors.toList());
@@ -40,20 +37,9 @@ public class ProductService {
             productDto.setOccasion(ptos.getOccasion());
             productDto.setSize(ptos.getSize());
             productDto.setFit(ptos.getFit());
-            productDto.setSubcategory(ptos.getSubCategory());
-            int index = products.indexOf(productDto);
-
-            if (index != -1) {
-                productDto = products.get(index);
-            } else {
-                productDto.setProductImageUrls(new ArrayList<>());
-                products.add(productDto);
-            }
-            ProductImageUrl productImageUrl = new ProductImageUrl();
-            productImageUrl.setImageUrl(ptos.getImageUrl());
-            productImageUrl.setIsthumbnail(ptos.isThumbnail());
-            productDto.getProductImageUrls().add(productImageUrl);
-
+            productDto.setType(ptos.getType());
+            productDto.setImageUrls(ptos.getImageUrl());
+            products.add(productDto);
         }
         return products;
     }
@@ -62,9 +48,9 @@ public class ProductService {
             
     }
 
-    private boolean subCategoryFilter(ProductFilter productFilter, ProductDtoSpecification e) {
-        if (productFilter.getSubCategories() != null) {
-            if(productFilter.getSubCategories().contains(e.getSubCategory())){
+    private boolean typeFilter(ProductFilter productFilter, ProductDtoSpecification e) {
+        if (productFilter.getType() != null) {
+            if(productFilter.getType().contains(e.getType())){
                 return true;
             }
             return false;

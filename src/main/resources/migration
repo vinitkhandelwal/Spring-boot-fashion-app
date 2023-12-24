@@ -19,3 +19,6 @@
 --    	  REFERENCES users(id),
 --	CONSTRAINT productrentedkey PRIMARY KEY (id)
 --);
+
+--alter table productlenders rename category to type;
+--alter table productlenders rename subcategory to category;

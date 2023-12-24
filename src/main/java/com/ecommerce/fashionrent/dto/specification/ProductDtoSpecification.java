@@ -8,11 +8,11 @@ public interface ProductDtoSpecification {
     String getProductName();
     BigDecimal getRrp();
     BigDecimal getRentPrice();
-    String getImageUrl();
+    String[] getImageUrl();
     String getBrand();
     String getOccasion();
     String getCategory();
-    String getSubCategory();
+    String getType();
     String getFit();
     String getGender();
     String getSize();

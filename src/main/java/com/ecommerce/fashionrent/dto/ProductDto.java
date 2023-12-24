@@ -1,9 +1,6 @@
 package com.ecommerce.fashionrent.dto;
 
-import com.ecommerce.fashionrent.entity.ProductImageUrl;
-
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 
 public class ProductDto {
@@ -17,8 +14,8 @@ public class ProductDto {
     private String category;
     private String size;
     private String fit;
-    private String subcategory;
-    private List<ProductImageUrl> productImageUrls;
+    private String type;
+    private String[] imageUrls;
 
     public Integer getProductId() {
         return productId;
@@ -76,12 +73,12 @@ public class ProductDto {
         this.category = category;
     }
 
-    public List<ProductImageUrl> getProductImageUrls() {
-        return productImageUrls;
+    public String[] getImageUrls() {
+        return imageUrls;
     }
 
-    public void setProductImageUrls(List<ProductImageUrl> productImageUrls) {
-        this.productImageUrls = productImageUrls;
+    public void setImageUrls(String[] imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
     public String getSize() {
@@ -100,12 +97,12 @@ public class ProductDto {
         this.fit = fit;
     }
 
-    public String getSubcategory() {
-        return subcategory;
+    public String getType() {
+        return type;
     }
 
-    public void setSubcategory(String subcategory) {
-        this.subcategory = subcategory;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

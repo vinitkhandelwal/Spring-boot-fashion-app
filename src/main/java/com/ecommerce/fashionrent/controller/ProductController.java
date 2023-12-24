@@ -19,7 +19,7 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public List<ProductDto> getAllProduct(@Parameter ProductFilter productFilter){
+    public List<ProductDto> getAllProduct(@Parameter(required = false) ProductFilter productFilter){
         return productService.getAllProducts(productFilter);
     }
 
