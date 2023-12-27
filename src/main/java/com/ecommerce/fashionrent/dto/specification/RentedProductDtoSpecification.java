@@ -8,6 +8,7 @@ public interface RentedProductDtoSpecification {
 
     Integer getProductId();
     String getProductName();
+    String getBrand();
     BigDecimal getRrp();
     BigDecimal getRentPrice();
     String[] getImageUrl();

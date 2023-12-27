@@ -1,7 +1,13 @@
 package com.ecommerce.fashionrent.dto;
 
+import lombok.Data;
+import org.springframework.data.geo.Point;
+
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
+
 
 public class ProductDto {
 
@@ -15,7 +21,15 @@ public class ProductDto {
     private String size;
     private String fit;
     private String type;
+    private String gender;
+    private Double latitude;
+    private Double longitude;
+    private Point point;
     private String[] imageUrls;
+    private LocalDate availableFrom;
+    private Double securityDeposit;
+
+
 
     public Integer getProductId() {
         return productId;
@@ -103,6 +117,48 @@ public class ProductDto {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getAvailableFrom() {
+        return availableFrom;
+    }
+
+    public void setAvailableFrom(LocalDate availableFrom) {
+        this.availableFrom = availableFrom;
+    }
+
+    public Double getSecurityDeposit() {
+        return securityDeposit;
+    }
+
+    public void setSecurityDeposit(Double securityDeposit) {
+        this.securityDeposit = securityDeposit;
     }
 
     @Override

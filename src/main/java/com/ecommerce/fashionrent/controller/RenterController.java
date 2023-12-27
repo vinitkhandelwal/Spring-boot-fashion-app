@@ -5,6 +5,7 @@ import com.ecommerce.fashionrent.security.UserPrincipal;
 import com.ecommerce.fashionrent.service.AuthService;
 import com.ecommerce.fashionrent.service.RenterService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +18,10 @@ import java.util.List;
 public class RenterController {
 
 
-    private final AuthService authService;
-    private final RenterService renterService;
+    @Autowired
+    private  AuthService authService;
+    @Autowired
+    private  RenterService renterService;
 
 
     @GetMapping

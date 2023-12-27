@@ -1,37 +1,48 @@
 package com.ecommerce.fashionrent.entity;
 
 
+//import com.vividsolutions.jts.geom.Point;
+import lombok.Data;
+//import org.geolatte.geom.Point;
 import org.hibernate.annotations.Type;
 import org.locationtech.jts.geom.Point;
+import org.postgis.Geometry;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
-@Entity(name = "productLenders")
+@Entity(name = "productlenders")
+//@Data
 public class ProductLenders {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "productname")
     private String productName;
     private BigDecimal rrp;
-    @Column(name = "rentPrice")
+    @Column(name = "rentprice")
     private BigDecimal rentPrice;
     private String brand;
     private String category;
-    private String ocassion;
+    private String occasion;
     @Column(name = "lenderid")
     private Integer lenderId;
-    private String subcategory;
+    private String type;
     private String gender;
     private String size;
     private String fit;
-//    @Type(type = "org.hibernate.spatial.geom.PointType")
-    private Point coordinates;
-
+    private Double latitude;
+    private Double longitude;
+    @Column(name = "availablefrom")
+    private LocalDate availableFrom;
+    @Column(name = "securitydeposit")
+    private Double securityDeposit;
+    @Transient
+    private String[] imageUrl;
 
     public Integer getId() {
         return id;
@@ -81,12 +92,20 @@ public class ProductLenders {
         this.category = category;
     }
 
-    public String getOcassion() {
-        return ocassion;
+    public String getOccasion() {
+        return occasion;
     }
 
-    public void setOcassion(String ocassion) {
-        this.ocassion = ocassion;
+    public void setOccasion(String occasion) {
+        this.occasion = occasion;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Integer getLenderId() {
@@ -97,13 +116,7 @@ public class ProductLenders {
         this.lenderId = lenderId;
     }
 
-    public String getSubcategory() {
-        return subcategory;
-    }
 
-    public void setSubcategory(String subcategory) {
-        this.subcategory = subcategory;
-    }
 
     public String getGender() {
         return gender;
@@ -129,11 +142,43 @@ public class ProductLenders {
         this.fit = fit;
     }
 
-    public Point getCoordinates() {
-        return coordinates;
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setCoordinates(Point coordinates) {
-        this.coordinates = coordinates;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String[] getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String[] imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public LocalDate getAvailableFrom() {
+        return availableFrom;
+    }
+
+    public void setAvailableFrom(LocalDate availableFrom) {
+        this.availableFrom = availableFrom;
+    }
+
+    public Double getSecurityDeposit() {
+        return securityDeposit;
+    }
+
+    public void setSecurityDeposit(Double securityDeposit) {
+        this.securityDeposit = securityDeposit;
     }
 }

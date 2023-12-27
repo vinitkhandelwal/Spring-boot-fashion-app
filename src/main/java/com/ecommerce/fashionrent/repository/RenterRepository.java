@@ -17,12 +17,12 @@ public interface RenterRepository extends JpaRepository<ProductLenders,Integer> 
 
     @Query(value = """
             with productdetail as(
-            select p.id,pl.id as productid, p.datefrom , p.dateto, pl.productname, pl.rrp , pl.rentprice, p.renteruserid from productrented p
+            select p.id,pl.id as productid, p.datefrom , p.dateto, pl.productname, pl.rrp , pl.brand,  pl.rentprice, p.renteruserid from productrented p
             left join productlenders pl on pl.id = p.productlenderid
             ),
             productimageurl as
             (select array_agg(imageurl) AS result_array,productid from productimageurl p2 group by productid)
-            select pd.id as productId, pd.productname as productName, piurl.result_array as imageUrl,pd.rrp, pd.rentprice, pd.datefrom as dateFrom, pd.dateto as dateTo from productdetail pd left join productimageurl piurl on piurl.productid = pd.id
+            select pd.id as productId, pd.brand, pd.productname as productName, piurl.result_array as imageUrl,pd.rrp, pd.rentprice, pd.datefrom as dateFrom, pd.dateto as dateTo from productdetail pd left join productimageurl piurl on piurl.productid = pd.id
             where pd.renteruserid  = :userId                        
             """, nativeQuery = true)
     public List<RentedProductDtoSpecification> getRentedProducts(@Param("userId") Integer userId);

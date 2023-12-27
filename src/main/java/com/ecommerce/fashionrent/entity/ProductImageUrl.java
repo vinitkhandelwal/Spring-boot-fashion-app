@@ -1,13 +1,12 @@
 package com.ecommerce.fashionrent.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "productimageurl")
 public class ProductImageUrl {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "productid")
     private Integer productId;

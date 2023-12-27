@@ -4,6 +4,7 @@ import com.ecommerce.fashionrent.dto.specification.RentedProductDtoSpecification
 import com.ecommerce.fashionrent.repository.ProductRepository;
 import com.ecommerce.fashionrent.repository.RenterRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
 @Service
 public class RenterService {
 
-    private final RenterRepository renterRepository;
+    @Autowired
+    private RenterRepository renterRepository;
 
     public List<RentedProductDtoSpecification> getAllRentedProduct(Integer userId){
             return renterRepository.getRentedProducts(userId).stream()

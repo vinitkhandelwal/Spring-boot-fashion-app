@@ -6,16 +6,17 @@ spring:
       driver-class-mame: org.postgresql.Driver
 
 
+
     jpa:
-#      proprties:
-#        hibernate:
+      proprties:
+        hibernate:
 #          temp:
 #            use_jdbc_metadata_defaults: false
 #          dialect:
-#            org.hibernate.spatial.dialect.postgis.PostgisDialect:
+#            org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
       show-sql: true
       hibernate:
-          ddl-auto: none
+          ddl-auto: update
           naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
       database-platform: com.ecommerce.fashionrent.config.PostgreSQL10CustomDialect
 

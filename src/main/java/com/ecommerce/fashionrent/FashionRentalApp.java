@@ -1,16 +1,15 @@
 package com.ecommerce.fashionrent;
 
 import com.ecommerce.fashionrent.config.AppProperties;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
 @EnableConfigurationProperties(AppProperties.class)
-public class FashionRentalApplication {
+public class FashionRentalApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FashionRentalApplication.class, args);
+		SpringApplication.run(FashionRentalApp.class, args);
 	}
 }
