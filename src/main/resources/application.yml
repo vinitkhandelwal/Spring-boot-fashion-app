@@ -71,4 +71,11 @@ flyway:
   Schemas: public
 
 server:
-  port: 8080
+  port: 8443
+
+ssl:
+  key-store: classpath:keystore/springboot.p12 # path inside docker container
+  key-store-type: PKCS12 # keystore type
+  key-alias: springboot # keystore alias
+  key-store-password: password  # keystore password
+
