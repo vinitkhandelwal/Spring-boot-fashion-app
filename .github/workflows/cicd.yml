@@ -35,8 +35,8 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - name: Pull Image from docker hub
-        run: docker pull vinit3101/fashionrent:latest
+        run: sudo docker pull vinit3101/fashionrent:latest
       - name: Delete old container
-        run: docker rm -f fashionrent-container
+        run: sudo docker rm -f fashionrent-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name fashionrent-container vinit3101/fashionrent
+        run: sudo docker run -d -p 8080:8080 --name fashionrent-container vinit3101/fashionrent
