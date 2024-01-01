@@ -39,4 +39,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f fashionrent-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name fashionrent-container vinit3101/fashionrent
+        run: docker run -d -p 8383:8383 --name fashionrent-container vinit3101/fashionrent
