@@ -2,6 +2,7 @@ package com.ecommerce.fashionrent.dto;
 
 import lombok.Data;
 import org.springframework.data.geo.Point;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.math.BigDecimal;
@@ -26,6 +27,7 @@ public class ProductDto {
     private Double longitude;
     private Point point;
     private String[] imageUrls;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate availableFrom;
     private Double securityDeposit;
 
