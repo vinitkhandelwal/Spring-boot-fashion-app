@@ -5,6 +5,7 @@ import org.springframework.data.geo.Point;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -29,6 +30,9 @@ public class ProductDto {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate availableFrom;
     private Double securityDeposit;
+    private Double delivery;
+    private String deliveryMethod;
+
 
 
 
@@ -120,7 +124,21 @@ public class ProductDto {
         this.type = type;
     }
 
+    public Double getDelivery() {
+        return delivery;
+    }
 
+    public void setDelivery(Double delivery) {
+        this.delivery = delivery;
+    }
+
+    public String getDeliveryMethod() {
+        return deliveryMethod;
+    }
+
+    public void setDeliveryMethod(String deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
+    }
 
     public Double getLatitude() {
         return latitude;

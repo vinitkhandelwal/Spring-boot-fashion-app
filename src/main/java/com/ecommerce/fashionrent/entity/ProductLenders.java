@@ -1,14 +1,6 @@
 package com.ecommerce.fashionrent.entity;
 
 
-//import com.vividsolutions.jts.geom.Point;
-import lombok.Data;
-//import org.geolatte.geom.Point;
-import org.hibernate.annotations.Type;
-import org.locationtech.jts.geom.Point;
-import org.postgis.Geometry;
-
-
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -43,6 +35,9 @@ public class ProductLenders {
     private Double securityDeposit;
     @Transient
     private String[] imageUrl;
+    private Double delivery;
+    @Column(name = "deliverymethod")
+    private String deliveryMethod;
 
     public Integer getId() {
         return id;
@@ -180,5 +175,21 @@ public class ProductLenders {
 
     public void setSecurityDeposit(Double securityDeposit) {
         this.securityDeposit = securityDeposit;
+    }
+
+    public Double getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Double delivery) {
+        this.delivery = delivery;
+    }
+
+    public String getDeliveryMethod() {
+        return deliveryMethod;
+    }
+
+    public void setDeliveryMethod(String deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
     }
 }
