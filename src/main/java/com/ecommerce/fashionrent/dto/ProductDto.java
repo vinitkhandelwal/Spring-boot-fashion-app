@@ -25,9 +25,8 @@ public class ProductDto {
     private String gender;
     private Double latitude;
     private Double longitude;
-    private Point point;
     private String[] imageUrls;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate availableFrom;
     private Double securityDeposit;
 

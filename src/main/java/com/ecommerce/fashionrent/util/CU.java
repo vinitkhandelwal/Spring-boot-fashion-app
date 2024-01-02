@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Base64;
 import java.util.Optional;
 
-public class CookieUtils {
+public class CU {
 
     public static Optional<Cookie> getCookie(HttpServletRequest request, String name) {
         Cookie[] cookies = request.getCookies();
@@ -53,6 +53,17 @@ public class CookieUtils {
     public static <T> T deserialize(Cookie cookie, Class<T> cls) {
         return cls.cast(SerializationUtils.deserialize(
                         Base64.getUrlDecoder().decode(cookie.getValue())));
+    }
+
+    public static String deserialize(String code) {
+        return (String) SerializationUtils.deserialize(
+                Base64.getUrlDecoder().decode(code));
+    }
+
+    public static void main(String[] args) {
+        String secretwithAccessKey = "AKIAYXLGJS4XVV6RUN6G:SMT+RtOP/tETwJRBLouDXnULA8wFssQhCql9YbCy";
+        String encoded =  serialize(secretwithAccessKey);
+        System.out.println(encoded);
     }
 
 

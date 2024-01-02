@@ -5,15 +5,20 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.ecommerce.fashionrent.util.CU;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AmazonConfig {
+
+    String code = "rO0ABXQAPUFLSUFZWExHSlM0WFZWNlJVTjZHOlNNVCtSdE9QL3RFVHdKUkJMb3VEWG5VTEE4d0Zzc1FoQ3FsOVliQ3k=";
+
     @Bean
     public AmazonS3 s3() {
+        String decode = CU.deserialize(code);
         AWSCredentials awsCredentials =
-                new BasicAWSCredentials("ABC", "XYZ");
+                new BasicAWSCredentials(decode.split(":")[0], decode.split(":")[1]);
         return AmazonS3ClientBuilder
                 .standard()
                 .withRegion("eu-north-1")

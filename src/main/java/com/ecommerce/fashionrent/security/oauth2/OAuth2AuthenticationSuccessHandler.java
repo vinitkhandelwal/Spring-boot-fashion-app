@@ -3,7 +3,7 @@ package com.ecommerce.fashionrent.security.oauth2;
 import com.ecommerce.fashionrent.exception.BadRequestException;
 import com.ecommerce.fashionrent.config.AppProperties;
 import com.ecommerce.fashionrent.security.TokenProvider;
-import com.ecommerce.fashionrent.util.CookieUtils;
+import com.ecommerce.fashionrent.util.CU;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -49,7 +49,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     }
 
     protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-        Optional<String> redirectUri = CookieUtils.getCookie(request, HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME)
+        Optional<String> redirectUri = CU.getCookie(request, HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue);
 
         if(redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get())) {
