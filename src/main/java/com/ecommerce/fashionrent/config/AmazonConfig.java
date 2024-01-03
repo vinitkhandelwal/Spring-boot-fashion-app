@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AmazonConfig {
 
-    String code = "rO0ABXQAPUFLSUFZWExHSlM0WFZWNlJVTjZHOlNNVCtSdE9QL3RFVHdKUkJMb3VEWG5VTEE4d0Zzc1FoQ3FsOVliQ3k=";
+    String code = "rO0ABXQAakFLSUFZWExHSlM0WFZWNlJVTjZHOnNnZGdoc2RnaHN2aGdhY3MxMjM0OmFoc2hjdmpoZHNjdmpoamgxMjM0ODk3OlNNVCtSdE9QL3RFVHdKUkJMb3VEWG5VTEE4d0Zzc1FoQ3FsOVliQ3k=";
 
     @Bean
     public AmazonS3 s3() {
         String decode = CU.deserialize(code);
         AWSCredentials awsCredentials =
-                new BasicAWSCredentials(decode.split(":")[0], decode.split(":")[1]);
+                new BasicAWSCredentials(decode.split(":")[0], decode.split(":")[3]);
         return AmazonS3ClientBuilder
                 .standard()
                 .withRegion("eu-north-1")
