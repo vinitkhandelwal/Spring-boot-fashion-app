@@ -35,7 +35,7 @@ public class UserService {
             throw new IllegalStateException("Failed to upload file", e);
         }
         String filePath =  "https://fashionapp-bucket.s3.eu-north-1.amazonaws.com/" + folder + "/" + fileName;
-        UserDetail userDetail = userDetailRepository.findByUserId(Long.valueOf(userId)).get();
+        UserDetail userDetail = userDetailRepository.findAllByUserId(Long.valueOf(userId)).get(0);
         userDetail.setImageUrl(filePath);
         userDetailRepository.save(userDetail);
         return userDetail;
