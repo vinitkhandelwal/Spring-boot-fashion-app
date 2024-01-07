@@ -1,13 +1,16 @@
 spring:
-    datasource:
+  datasource:
       url: jdbc:postgresql://database-1.cdesblz4vpqv.eu-north-1.rds.amazonaws.com:5432/init_database
       username: postgres
       password: Password$789
       driver-class-mame: org.postgresql.Driver
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
 
 
-
-    jpa:
+  jpa:
       proprties:
         hibernate:
 #          temp:
@@ -20,7 +23,7 @@ spring:
           naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
       database-platform: com.ecommerce.fashionrent.config.PostgreSQL10CustomDialect
 
-    security:
+  security:
       oauth2:
         client:
           registration:
